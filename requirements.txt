@@ -1,0 +1,6 @@
+seaborn
+joblib
+scikit-learn
+numpy
+pandas
+django
