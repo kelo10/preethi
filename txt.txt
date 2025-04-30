@@ -1,0 +1,54 @@
+ C:\Users\santos\Desktop\Disorder-Prediction System> .\venv\Scripts\Activate
+(venv) PS C:\Users\santos\Desktop\Disorder-Prediction System> python manage.py makemigrations
+C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\sklearn\base.py:376: InconsistentVersionWarning: Trying to unpickle estimator MultinomialNB from version 
+0.21.3 when using version 1.5.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+Traceback (most recent call last):
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\manage.py", line 21, in <module>
+    main()
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\manage.py", line 17, in main
+    execute_from_command_line(sys.argv)
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\core\management\__init__.py", line 401, in execute_from_command_line
+    utility.execute()
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\core\management\__init__.py", line 395, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\core\management\base.py", line 328, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\core\management\base.py", line 369, in execute
+    output = self.handle(*args, **options)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\core\management\base.py", line 83, in wrapped
+    res = handle_func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\core\management\commands\makemigrations.py", line 101, in handle
+    loader.check_consistent_history(connection)
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\migrations\loader.py", line 283, in check_consistent_history
+    applied = recorder.applied_migrations()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\migrations\recorder.py", line 77, in applied_migrations
+    return {(migration.app, migration.name): migration for migration in self.migration_qs}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\models\query.py", line 276, in __iter__
+    self._fetch_all()
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\models\query.py", line 1261, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1177, in execute_sql
+    return list(result)
+           ^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1576, in cursor_iter
+    for rows in iter((lambda: cursor.fetchmany(itersize)), sentinel):
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1576, in <lambda>
+    for rows in iter((lambda: cursor.fetchmany(itersize)), sentinel):
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\utils.py", line 97, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\santos\Desktop\Disorder-Prediction System\venv\Lib\site-packages\django\db\backends\postgresql\utils.py", line 6, in utc_tzinfo_factory
+    raise AssertionError("database connection isn't set to UTC")
+AssertionError: database connection isn't set to UTC
+(venv) PS C:\Users\santos\Desktop\Disorder-Prediction System> 

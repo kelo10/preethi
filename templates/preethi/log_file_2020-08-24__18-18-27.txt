@@ -1,0 +1,14 @@
+
+---Downloaded files---
+The import files for: Contact - Split Screen were successfully downloaded!
+Initial max execution time = 30
+Files info:
+Site URL = http://localhost/medbook
+Data file = C:\xampp\htdocs\medbook/wp-content/themes/norebro/demo/contact-split-screen/content.xml
+Widget file = not defined!
+Customizer file = not defined!
+Redux files:
+not defined!
+
+---pt-ocdi/after_import---
+
