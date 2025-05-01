@@ -488,12 +488,16 @@ def create_admin_user(request):
 from django.http import HttpResponse
 from django.db import connection  # Import the connection object
 
+from django.http import HttpResponse
+from django.db import connection
+
 def grant_permissions(request):
     try:
         with connection.cursor() as cursor:
             cursor.execute("GRANT CREATE ON SCHEMA public TO disorder_user;")
-        return HttpResponse("Successfully granted CREATE permission on public schema to disorder_user.")
+            cursor.execute("GRANT USAGE ON SCHEMA public TO disorder_user;") # Add USAGE permission
+            return HttpResponse("Successfully granted CREATE and USAGE permission on public schema to disorder_user.")
     except Exception as e:
-        return HttpResponse(f"Failed to grant CREATE permission: {e}")
+        return HttpResponse(f"Failed to grant permissions: {e}")
 
 #-----------------------------chatting system ---------------------------------------------------
