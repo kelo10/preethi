@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from datetime import date
 
+from django.core.management import call_command
+
 from django.contrib import messages
 from django.contrib.auth.models import User , auth
 from .models import patient , doctor , diseaseinfo , consultation ,rating_review
@@ -11,13 +13,16 @@ from chats.models import Chat,Feedback
 # Create your views here.
 
 
-import joblib
-
-# Load the model,
-model = joblib.load('trained_model')
-
+#loading trained_model
+import joblib as jb
+model = jb.load('trainedd_model')
 
 
+def run_migrations(request):
+    if request.method == "POST":
+        call_command("migrate")
+        return JsonResponse({"status": "migrations applied"})
+    return JsonResponse({"error": "Invalid request"}, status=400)
 
 def home(request):
 
@@ -96,18 +101,18 @@ def pviewprofile(request, patientusername):
 
 def checkdisease(request):
 
-  diseaselist=['Diabetes Mellitus', 'Hypothyroidism', 'Hyperthyroidism', 'Cushing\'s Syndrome', 'Addison\'s Disease', 
+  diseaselist=['Diabetes Mellitus', 'Hypothyroidism', 'Hyperthyroidism', 'Cushing Syndrome', 'Addisons Disease', 
                    'Hypopituitarism', 'Hyperparathyroidism', 'Hypoparathyroidism', 
-                   'Acromegaly', 'Adrenal Insufficiency']
+                   'Acromegaly', 'Adrenal Insufficiency', 'Pineal Tumors', 'Type 2 Diabetes', 'Type 1 Diabetes']
 
 
-  symptomslist=['fatigue', 'weight_gain', 'weight_loss', 'increased_hunger', 'increased_thirst', 
+  symptomslist=['fatigue', 'stretch_marks', 'osteoporosis', 'sleep_disturbances', 'low_blood_sugar', 'salt_craving', 'slow_healing_sows', 'thin_skin', 'weight_gain', 'weight_loss', 'increased_hunger', 'increased_thirst', 
                     'frequent_urination', 'dry_skin', 'hair_loss', 'heat_intolerance', 'cold_intolerance', 
                     'muscle_weakness', 'joint_pain', 'irregular_menstrual_cycles', 'excessive_hair_growth', 
                     'acne', 'abdominal_pain', 'depression', 'anxiety', 'nausea', 
-                    'vomiting', 'diarrhea', 'constipation', 'low_blood_pressure', 'high_blood_pressure', 
+                    'vomiting', 'darkening_of_skin', 'constipation', 'low_blood_pressure', 'high_blood_pressure', 
                     'vision_problems', 'dizziness', 'palpitations', 'tremors', 'sweating', 
-                    'hand_shaking', 'nervousness', 'difficulty_sleeping', 'mood_swings', 'dehydration', 
+                    'headache', 'nervousness', 'difficulty_sleeping', 'mood_swings', 'dehydration', 
                     'slow_heart_rate', 'rapid_heart_rate', 'goiter', 'hoarseness', 'frequent_infections']
 
   alphabaticsymptomslist = sorted(symptomslist)
@@ -178,34 +183,55 @@ def checkdisease(request):
 
         #consult_doctor codes----------
 
-      # Doctor specialization based on predicted disorder
+        #   doctor_specialization = []
         
 
-        Endocrinologist = [  'Diabetes Mellitus','Hypothyroidism','Hyperthyroidism','Cushing Syndrome','Addison’s Disease','Hyperparathyroidism','Hypoparathyroidism','Hypopituitarism','Adrenal Insufficiency']
+        Endocrinologist = ['Hyperparathyroidism','Hypothyroidism']
        
-        Gynecologist = [ 'Hypopituitarism']
-        
-        Neurologist = [ 'Hypopituitarism']
-
-        preethiNP = [ 'Hypothyroidism)']
-
-        preethi = [ 'Diabetes Mellitus']
+        Gynecologist = [ 'Cushing Syndrome','Hypoparathyroidism', 'Polycystic Ovary Syndrome']
        
-        
+        Primary_Care_Physician = ['Addisons Disease' ]
+
+        Dietitian = ['Diabetes Mellitus', 'Type 1 Diabetes']
+
+        Dermatologist = ['Acromegaly','Paralysis (brain hemorrhage)','Migraine','Cervical spondylosis']
+
+        Oncologist = ['Hypopituitarism', 'Pituitary Tumors']
+
+        Neurosurgeon = ['Adrenal Insufficiency', 'Pineal Tumors']
+
+        Rheumatologist = ['Hyperthyroidism']
+
+        Nutritionist = ['Type 2 Diabetes']
+         
         if predicted_disease in Endocrinologist :
            consultdoctor = "Endocrinologist"
            
         if predicted_disease in Gynecologist :
            consultdoctor = "Gynecologist"
+           
 
-        elif predicted_disease in Neurologist :
-           consultdoctor = "Neurologist"
-
-        elif predicted_disease in Neurologist :
-           consultdoctor = "preethiNP"
-
-        elif predicted_disease in Neurologist :
-           consultdoctor = "preethi"
+        elif predicted_disease in Primary_Care_Physician :
+           consultdoctor = "Primary_Care_Physician"
+     
+        elif predicted_disease in Dietitian :
+           consultdoctor = "Dietitian"
+     
+        elif predicted_disease in Dermatologist :
+           consultdoctor = "Dermatologist"
+     
+        elif predicted_disease in Oncologist :
+           consultdoctor = "Oncologist"
+     
+        elif predicted_disease in Neurosurgeon :
+           consultdoctor = "Neurosurgeon"
+     
+        elif predicted_disease in Rheumatologist :
+           consultdoctor = "Rheumatologist"
+     
+        elif predicted_disease in Nutritionist :
+           consultdoctor = "Nutritionist"
+     
         else :
            consultdoctor = "other"
 
@@ -444,5 +470,3 @@ def chat_messages(request):
 
 
 #-----------------------------chatting system ---------------------------------------------------
-
-
