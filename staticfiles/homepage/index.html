@@ -1,0 +1,525 @@
+﻿
+{% extends "basic.html" %}
+{% load static %}
+
+ 
+	{% block head %}
+
+
+{% endblock %}
+
+
+
+
+{% block body %}
+
+
+    
+<div class="jumbotron">
+    <h3 class="display-4">Revolutionizing Endocrine Disorder Diagnosis</h3>
+    <font color="black"><p class="lead">
+      <i>It is not uncommon to find yourself or a loved one in urgent need of a doctor's assistance, only to find that help is not immediately available.<br> The Disorder Prediction System aims to bridge this gap by providing end-user support and online consultation services. This innovative system <br>  allows users to receive instant guidance on their health concerns through an intelligent, data-driven platform.
+
+        The application is designed with comprehensive database of symptoms and their associated disorders. Users can input their symptoms and share details about their health issues.<br>  The system then processes this information using advanced data mining techniques to accurately predict potential illnesses.
+        
+        By leveraging this <br>  intelligent system, users can quickly identify possible disorders and take informed steps toward seeking appropriate medical treatment.<br>  The platform also facilitates direct communication with doctors, enabling patients to consult with healthcare professionals based on the system's predictions and their specific needs.<i/></font>
+    
+                
+  
+     {% if user.is_authenticated %}
+
+     
+     {% else %}
+
+      <p class="lead">
+      <button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target=".bd-example-modal-lg">Get Started</button>
+      </p>
+    
+
+</div>
+
+<br><br><br>
+<div class="container mt-5 mb-3" style="width:fit-content;">
+      <center>
+        <h1>Continue As</h1>
+        </center>
+      
+      
+      <form>
+          <div class="container mt-5 mb-5">
+       <div class="row">
+          <div class="col">
+             <a href="{% url 'sign_in_admin' %}">
+      <img  alt="admin" src="{% static 'homepage/admin.png' %}"  class="img">
+      </a>
+          </div>
+      
+          <div class="col">
+      <a href="{% url 'sign_in_doctor' %}">
+      <img  alt="doctor" src="{% static 'homepage/doctor.png' %}"  class="img">
+      </a>
+          </div>
+      
+          <div class="col">
+      <a href="{% url 'sign_in_patient' %}">
+      <img  alt="patient" src="{% static 'homepage/patient.png' %}"  class="img">
+      </a>
+          </div>
+        </div>
+        </div>
+      </form>
+</div>
+
+
+    
+
+    {% endif %}
+
+<br><br>
+
+
+
+
+<!-- Large modal -->
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+   
+<center>
+  <h1>Sign-In  As</h1>
+  </center>
+<br><br>
+
+<center>
+<form>
+    <div class="container mt-5 mb-5">
+ <div class="row">
+    <div class="col">
+       <a href="{% url 'sign_in_admin' %}">
+<img  alt="admin" src="{% static 'homepage/admin.png' %}"  class="img">
+</a>
+    </div>
+
+    <div class="col">
+<a href="{% url 'sign_in_doctor' %}">
+<img  alt="doctor" src="{% static 'homepage/doctor.png' %}"  class="img">
+</a>
+    </div>
+
+    <div class="col">
+<a href="{% url 'sign_in_patient' %}">
+<img  alt="patient" src="{% static 'homepage/patient.png' %}"  class="img">
+</a>
+    </div>
+  </div>
+  </div>
+</form>
+</center>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Large modal -->
+
+<div class="modal fade bd-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+   
+<center>
+  <h1>Sign-Up  As</h1>
+  </center>
+<br><br>
+
+<center>
+<form>
+    <div class="container mt-5 mb-5 ml-5 mr-5">
+ <div class="row">
+
+    <div class="col">
+<a href="{% url 'signup_doctor' %}">
+<img  alt="doctor" src="{% static 'homepage/doctor.png' %}"  class="img">
+</a>
+    </div>
+
+    <div class="col">
+<a href="{% url 'signup_patient' %}">
+<img  alt="patient" src="{% static 'homepage/patient.png' %}"  class="img">
+</a>
+    </div>
+  </div>
+  </div>
+</form>
+</center>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<br><br><br><br>
+
+
+<center><h2>Our Doctors</h2></center>
+<div class="row mt-5 mb-5">
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Dr. MANISH BANSAL </h5>
+                <img  alt="admin" src="{% static 'homepage/kapil.png' %}" width="200" height="150" class="rounded">
+                <p class="card-text">H.No-1283, Ward No-14, New Anaz Mandi Road, P.O-Radaur, Distt. Yamuna Nagar - 135133, (Haryana).</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Dr. BANSAL JATINDER PAUL </h5>
+                <img  alt="admin" src="{% static 'homepage/k2.png' %}" width="200" height="150" class="rounded">
+                <p class="card-text">Om Niwas Khai Basti, Khai Road, Lehragaga-148031, Distt. Sangrur, Punjab.</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">DR. RADHIKA SWAROOP</h5>
+                <img  alt="admin" src="{% static 'homepage/k3.png' %}" width="200" height="150" class="rounded">
+                <p class="card-text">Swaroop Hospital, 1, Hawa Sarak, Civil Lines, # Jaipur-302 019.</p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<center><h2>Testimonials</h2></center>
+<div class="row mt-5 mb-5">
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">John S.</h5>
+                <img  alt="admin" src="{% static 'homepage/G.png' %}" width="150" height="100" class="rounded">
+                <p class="card-text">I was amazed at how quickly the system provided me with an accurate diagnosis. The ease of booking an appointment with a specialist through the platform was a game-changer. Highly recommend it for anyone needing fast and reliable medical advice! This platform is the future of healthcare.</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Emily R.</h5>
+                <img  alt="admin" src="{% static 'homepage/G.png' %}" width="150" height="100" class="rounded">
+                <p class="card-text">Telemedicine AI Endocrinology has been a lifesaver. As someone managing hypothyroidism, having access to instant guidance and the ability to consult with top endocrinologists from home has greatly improved my quality of life. The AI predictions are spot on and incredibly helpful.</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Kumar T.</h5>
+                <img  alt="admin" src="{% static 'homepage/G.png' %}" width="150" height="100" class="rounded">
+                <p class="card-text">I never thought managing my health could be so convenient. The system's ability to analyze my symptoms and suggest possible conditions was impressive. Booking a virtual consultation was seamless, and the doctor I spoke with was very knowledgeable.</p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br><br><br><br>
+
+        
+
+
+
+
+
+
+
+
+
+<!--
+
+    <div id="footer" class="card bg-dark text-white">
+      <div class="card-body">
+        Contact-
+     
+    <ul >
+     
+      <li >
+        <h5 class="mb-1">Email: noreply@preethi.com </h5>
+      </li>
+      <li >
+        <h5 class="mb-1">Contact no. +91 7897432146</h5>
+      </li>
+      <li >
+        <h5 class="mb-1">Address: New Delhi, India</h5>
+        <!--<div class="footer-copyright text-center">© 2021 Copyright:
+          <a href="#"> homepage</a>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+  </div>
+-->
+    <!-- Site footer -->
+    <div id="footer" class="card bg-dark text-white">
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <img src="{% static 'homepage/aar.png' %}"><br>
+            <p class="text-justify"><b>Telemedicine AI Endocrinology</b>-- Imagine a world where you can get immediate guidance on your endocrine health from the comfort of your home. Whether it's a sudden health concern or ongoing management of a chronic condition, our AI-driven Disorder Prediction System is here to help. Our platform offers end users the power of intelligent diagnostics and seamless online consultation.
+
+              Endocrine disorders can have a profound impact on health and well-being. Our cutting-edge system leverages advanced data mining techniques to provide precise and reliable predictions based on user-provided symptoms. </p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="https://www.topdoctors.co.uk/medical-dictionary/pineal-gland#:" target="_blank"></a>Pineal Gland Disorders</li>
+              <li><a href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/gonadal-disorders#:" target="_blank">Gonadal Disorders</a></li>
+              <li><a href="https://www.uclahealth.org/medical-services/pancreas-disease/pancreatic-conditions" target="_blank">Pancreas Disorders</a></li>
+              <li><a href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/disorders-of-the-thyroid" target="_blank">Thyroid Gland Disorders</a></li>
+              <li><a href="https://www.templehealth.org/services/conditions/parathyroid-disorders" target="_blank">Parathyroid Gland Disorders</a></li>
+              <li><a href="https://www.ohsu.edu/brain-institute/understanding-pituitary-disorders" target="_blank"></a>Pituitary Gland Disorders</li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#">Intelligent Analysis</a></li>
+              <li><a href="#">Professional Consultation</a></li>
+              <li><a href="#">Instant Guidance</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2024 All Rights Reserved by 
+         <a href="#">Preethi NP</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+</div>
+ 
+
+<style>
+  .site-footer
+{
+  background-color:black;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+.social-icons a.dribbble:hover
+{
+  background-color:#ea4c89
+}
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+</style>
+
+
+
+
+
+</div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+    
+
+
+
+
+    
+{% endblock %}
