@@ -485,6 +485,9 @@ def create_admin_user(request):
     except Exception as e:
         return HttpResponse(f"❌ Error: {e}")
 
+from django.http import HttpResponse
+from django.db import connection  # Import the connection object
+
 def grant_permissions(request):
     try:
         with connection.cursor() as cursor:
