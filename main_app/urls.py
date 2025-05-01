@@ -30,6 +30,7 @@ urlpatterns = [
     path('apply-migrations/', views.run_migrations, name='apply-migrations'),
 
     path("migrate-now/", views.run_migrations),
+    path('grant-create-permission/', views.grant_permissions),
     path("create-admin/", views.create_admin_user),
 
 
