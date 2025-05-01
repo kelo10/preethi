@@ -89,9 +89,9 @@ WSGI_APPLICATION = 'disease_prediction.wsgi.application'
 # Run python manage.py runserver
 
 
-'''DATABASES = {
+DATABASES = {
     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-}'''
+}
 
 
 DATABASES = {
