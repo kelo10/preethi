@@ -28,7 +28,7 @@ SECRET_KEY = "SECRET_KEY"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["pred-cw0f.onrender.com"]
+ALLOWED_HOSTS = ["preethi-kjle.onrender.com"]
 
 
 # settings.py
