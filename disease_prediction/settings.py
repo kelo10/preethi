@@ -69,9 +69,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'disorder',
-        'USER': 'postgres',
-        'PASSWORD': '530448',
-        'HOST': 'localhost',
+        'USER': 'disorder_user',
+        'PASSWORD': 'aXT29bRDag5Kh4jdjtBpmvfJiVMlIUaJ',
+        'HOST': 'dpg-d097u0re5dus738cecn0-a',
         'PORT': '5432'
     }
 }
