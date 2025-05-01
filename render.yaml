@@ -1,12 +1,10 @@
 services:
   - type: web
-    name: preethi
+    name: disorder-service
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn preethi.wsgi:application
+    buildCommand: ""
+    startCommand: gunicorn disease_prediction.wsgi
     preDeployCommand: python manage.py migrate
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: disorder
-          property: connectionString
+      - key: DEBUG
+        value: True
