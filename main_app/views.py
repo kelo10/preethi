@@ -485,4 +485,12 @@ def create_admin_user(request):
     except Exception as e:
         return HttpResponse(f"❌ Error: {e}")
 
+def grant_permissions(request):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("GRANT CREATE ON SCHEMA public TO disorder_user;")
+        return HttpResponse("Successfully granted CREATE permission on public schema to disorder_user.")
+    except Exception as e:
+        return HttpResponse(f"Failed to grant CREATE permission: {e}")
+
 #-----------------------------chatting system ---------------------------------------------------
