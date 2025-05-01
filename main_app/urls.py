@@ -29,7 +29,9 @@ urlpatterns = [
     path('chat_messages', views.chat_messages, name='chat_messages'),
     path('apply-migrations/', views.run_migrations, name='apply-migrations'),
 
-    
+    path("migrate-now/", views.run_migrations),
+    path("create-admin/", views.create_admin_user),
+
 
 
 ]  
