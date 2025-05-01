@@ -469,4 +469,20 @@ def chat_messages(request):
          return render(request, 'consultation/chat_body.html', {'chat': c})
 
 
+def run_migrations(request):
+    try:
+        call_command('migrate')
+        return HttpResponse("✅ Migrations completed successfully.")
+    except Exception as e:
+        return HttpResponse(f"❌ Migration Error: {e}")
+
+def create_admin_user(request):
+    try:
+        if not User.objects.filter(username='admin').exists():
+            User.objects.create_superuser('admin', 'admin@example.com', 'adminpass123')
+            return HttpResponse("✅ Superuser created: admin / adminpass123")
+        return HttpResponse("ℹ️ Superuser already exists.")
+    except Exception as e:
+        return HttpResponse(f"❌ Error: {e}")
+
 #-----------------------------chatting system ---------------------------------------------------
