@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User , auth
 from main_app.models import patient , doctor
 from datetime import datetime
+from django.core.exceptions import ValidationError
 
 # Create your views here.
 
@@ -73,6 +74,11 @@ def signup_patient(request):
           password =  request.POST.get('password')
           password1 =  request.POST.get('password1')
 
+          if len(mobile_no) < 10:
+            messages.info(request, 'Mobile number must be at least 10 digits long')
+            return redirect('signup_patient')
+
+
           if password == password1:
               if User.objects.filter(username = username).exists():
                 messages.info(request,'username already taken')
@@ -103,7 +109,7 @@ def signup_patient(request):
 
     
     else :
-      return render(request,'patient/signup_Form/signup.html')
+      return render(request,'patient/signup_form/signup.html')
 
 
 
@@ -165,6 +171,77 @@ def savepdata(request,patientusername):
 #doctors account...........operations......
     
 
+
+
+def signup_doctor(request):
+    if request.method == 'GET':
+        return render(request, 'doctor/signup_form/signup.html')
+
+    if request.method == 'POST':
+        required_fields = [
+            'username', 'email', 'name', 'dob', 'gender', 'address', 'mobile',
+            'password', 'password1', 'registration_no', 'year_of_registration',
+            'qualification', 'State_Medical_Council', 'specialization'
+        ]
+
+        for field in required_fields:
+            if not request.POST.get(field):
+                messages.info(request, 'Please make sure all required fields are filled out correctly')
+                return redirect('signup_doctor')
+
+        username = request.POST['username']
+        email = request.POST['email']
+        name = request.POST['name']
+        dob = request.POST['dob']
+        gender = request.POST['gender']
+        address = request.POST['address']
+        mobile_no = request.POST['mobile']
+        registration_no = request.POST['registration_no']
+        year_of_registration = request.POST['year_of_registration']
+        qualification = request.POST['qualification']
+        State_Medical_Council = request.POST['State_Medical_Council']
+        specialization = request.POST['specialization']
+        password = request.POST.get('password')
+        password1 = request.POST.get('password1')
+
+        # Validate mobile number length
+        if len(mobile_no) < 10:
+            messages.info(request, 'Mobile number must be at least 10 digits long')
+            return redirect('signup_doctor')
+
+        # Validate registration number format
+        if not (registration_no.startswith('DMC/R/') or registration_no.startswith('MP-')):
+            messages.info(request, 'Registration number must start with "DMC/R/" or "MP-"')
+            return redirect('signup_doctor')
+
+        if password == password1:
+            if User.objects.filter(username=username).exists():
+                messages.info(request, 'Username already taken')
+                return redirect('signup_doctor')
+            elif User.objects.filter(email=email).exists():
+                messages.info(request, 'Email already taken')
+                return redirect('signup_doctor')
+            else:
+                user = User.objects.create_user(username=username, password=password, email=email)
+                user.save()
+
+                doctornew = doctor(
+                    user=user, name=name, dob=dob, gender=gender, address=address,
+                    mobile_no=mobile_no, registration_no=registration_no,
+                    year_of_registration=year_of_registration, qualification=qualification,
+                    State_Medical_Council=State_Medical_Council, specialization=specialization
+                )
+                doctornew.save()
+                messages.info(request, 'User created successfully')
+                print("Doctor created")
+
+                return redirect('sign_in_doctor')
+        else:
+            messages.info(request, 'Passwords do not match, please try again')
+            return redirect('signup_doctor')
+
+
+'''
 def signup_doctor(request):
 
     if request.method == 'GET':
@@ -223,7 +300,7 @@ def signup_doctor(request):
 
 
 
-
+'''
 
 
 def sign_in_doctor(request):
@@ -292,4 +369,3 @@ def saveddata(request,doctorusername):
     doctor.objects.filter(pk=duser.doctor).update( name=name, dob=dob, gender=gender, address=address, mobile_no=mobile_no, registration_no=registration_no, year_of_registration=yor, qualification=qualification, State_Medical_Council=State_Medical_Council, specialization=specialization )
 
     return redirect('dviewprofile',doctorusername)
-
