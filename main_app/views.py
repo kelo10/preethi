@@ -500,10 +500,5 @@ def grant_permissions(request):
     except Exception as e:
         return HttpResponse(f"Failed to grant permissions: {e}")
 
-def test_db_connection(request):
-    try:
-        connection.ensure_connection()
-        return HttpResponse("Database connection successful!")
-    except Exception as e:
-        return HttpResponse(f"Database connection failed: {e}")
+
 #-----------------------------chatting system ---------------------------------------------------
