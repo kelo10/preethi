@@ -33,6 +33,6 @@ urlpatterns = [
     path('grant-create-permission/', views.grant_permissions),
     path("create-admin/", views.create_admin_user),
 
-    path('test-db/', main_views.test_db_connection, name='test_db_connection'),
+    
 
 ]  
