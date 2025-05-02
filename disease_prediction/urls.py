@@ -20,5 +20,6 @@ urlpatterns = [
      path('admin/', admin.site.urls),
      path("", include("main_app.urls")),
      path("accounts/", include("accounts.urls")),
-     path("", include("chats.urls"))
+     path("", include("chats.urls")),
+     path('test-db/', main_views.test_db_connection, name='test_db_connection')
 ]
